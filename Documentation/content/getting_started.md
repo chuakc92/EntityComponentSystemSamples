@@ -30,7 +30,7 @@ class Rotator : MonoBehaviour
     // and changes the rotation of the Transform component.
     void Update()
     {
-        transform.rotation *= Quaternion.AxisAngle(Time.deltaTime * speed, Vector3.up);
+        transform.rotation *= Quaternion.AngleAxis(Time.deltaTime * speed, Vector3.up);
     }
 }
 ```
@@ -74,7 +74,7 @@ class RotatorSystem : ComponentSystem
         // (as defined above in Group struct).
         foreach (var e in GetEntities<Group>())
         {
-            e.Transform.rotation *= Quaternion.AxisAngle(e.Rotator.Speed * deltaTime, Vector3.up);
+            e.Transform.rotation *= Quaternion.AngleAxis(e.Rotator.Speed * deltaTime, Vector3.up);
         }
     }
 }
